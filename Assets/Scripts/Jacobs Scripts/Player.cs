@@ -1,31 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public Rigidbody2D rb;
+    public float moveSpeed = 5f; // Speed of the player movement
+
+    private Rigidbody2D rb;
     private Vector2 movement;
+    private Vector2 lastMovementDirection;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        // Get input
+        // Get the input from the player
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        // Flip the player based on movement direction
-        if (movement.x != 0)
+        // Check if there is any movement input
+        if (movement != Vector2.zero)
         {
-            transform.localScale = new Vector3(Mathf.Sign(movement.x), transform.localScale.y, 1f);
-        }
-        if (movement.y != 0)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Sign(movement.y), 1f);
+            lastMovementDirection = movement;
+
+            // Face the direction of movement
+            if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+            {
+                // Horizontal movement
+                if (movement.x > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0); // Facing right
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 180); // Facing left
+                }
+            }
+            else
+            {
+                // Vertical movement
+                if (movement.y > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 90); // Facing up
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, -90); // Facing down
+                }
+            }
         }
     }
 
+    // FixedUpdate is called at a fixed interval and is used for physics calculations
     void FixedUpdate()
     {
         // Move the player
