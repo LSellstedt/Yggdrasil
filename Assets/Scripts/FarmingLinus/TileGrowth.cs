@@ -7,9 +7,12 @@ public class TileGrowth : MonoBehaviour
 {
     public TileBase startingTileA;
     public TileBase startingTileB;
-    public TileBase stageOneTile;
-    public TileBase stageTwoTile;
-    public TileBase finalStageTile;
+    public TileBase stageOneTileA;
+    public TileBase stageTwoTileA;
+    public TileBase finalStageTileA;
+    public TileBase stageOneTileB;
+    public TileBase stageTwoTileB;
+    public TileBase finalStageTileB;
 
     public TileBase tileX; // Assign this in the inspector
     public TileBase tileY; // Assign this in the inspector
@@ -17,6 +20,8 @@ public class TileGrowth : MonoBehaviour
     private Tilemap tilemap;
     private Dictionary<Vector3Int, Coroutine> tileCoroutines = new Dictionary<Vector3Int, Coroutine>();
     private Dictionary<TileBase, int> tileScores = new Dictionary<TileBase, int>();
+
+    private bool isPlantingModeA = true;
 
     void Start()
     {
@@ -29,6 +34,12 @@ public class TileGrowth : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            isPlantingModeA = !isPlantingModeA;
+            Debug.Log("Planting mode switched. Current mode: " + (isPlantingModeA ? "A" : "B"));
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -42,10 +53,10 @@ public class TileGrowth : MonoBehaviour
                 {
                     StopCoroutine(tileCoroutines[tilePosition]);
                 }
-                Coroutine growthCoroutine = StartCoroutine(GrowTile(tilePosition));
+                Coroutine growthCoroutine = StartCoroutine(GrowTile(tilePosition, isPlantingModeA));
                 tileCoroutines[tilePosition] = growthCoroutine;
             }
-            else if (clickedTile == finalStageTile)
+            else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB)
             {
                 // Update score based on the type of the original tile
                 TileBase originalTile = tilemap.GetTile(tilePosition); // Assuming you stored original tiles somewhere
@@ -61,8 +72,8 @@ public class TileGrowth : MonoBehaviour
                     Debug.Log("Tile Y score: " + tileScores[tileY]);
                 }
 
-                // Revert to the starting tile
-                tilemap.SetTile(tilePosition, startingTileA); // Change this to the appropriate starting tile
+                // Revert to the appropriate starting tile
+                tilemap.SetTile(tilePosition, startingTileA); // Change this to the appropriate starting tile if needed
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
                     StopCoroutine(tileCoroutines[tilePosition]);
@@ -72,15 +83,36 @@ public class TileGrowth : MonoBehaviour
         }
     }
 
-    private IEnumerator GrowTile(Vector3Int tilePosition)
+    private IEnumerator GrowTile(Vector3Int tilePosition, bool isModeA)
     {
-        tilemap.SetTile(tilePosition, stageOneTile);
+        if (isModeA)
+        {
+            tilemap.SetTile(tilePosition, stageOneTileA);
+        }
+        else
+        {
+            tilemap.SetTile(tilePosition, stageOneTileB);
+        }
         yield return new WaitForSeconds(2.0f); // Time between stages
 
-        tilemap.SetTile(tilePosition, stageTwoTile);
+        if (isModeA)
+        {
+            tilemap.SetTile(tilePosition, stageTwoTileA);
+        }
+        else
+        {
+            tilemap.SetTile(tilePosition, stageTwoTileB);
+        }
         yield return new WaitForSeconds(2.0f);
 
-        tilemap.SetTile(tilePosition, finalStageTile);
+        if (isModeA)
+        {
+            tilemap.SetTile(tilePosition, finalStageTileA);
+        }
+        else
+        {
+            tilemap.SetTile(tilePosition, finalStageTileB);
+        }
         tileCoroutines.Remove(tilePosition);
     }
 }
