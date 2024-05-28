@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728fffb15b629034b8f7f890d0882735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   rb: {fileID: 304047303}
 --- !u!50 &304047303
 Rigidbody2D:
@@ -252,6 +252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 724998421}
+  - {fileID: 2046241245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &304047306
@@ -900,11 +901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87163b959a14a404a9aac2db226b4875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 4
   EnemyScase: {fileID: 1973669553}
-  stunDuration: 0.3
+  stunDuration: 0.2
   knockBackForce: 5
-  knockBackDuration: 0.5
+  knockBackDuration: 0.2
   damage: 1
 --- !u!50 &1973669558
 Rigidbody2D:
@@ -1018,12 +1019,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046241242}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -0.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 304047305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5430116212525103051
 PrefabInstance:
@@ -1086,7 +1087,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 2046241245}
   - {fileID: 304047305}
   - {fileID: 1973669555}
   - {fileID: 648573953}

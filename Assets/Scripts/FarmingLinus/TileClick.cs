@@ -7,11 +7,16 @@ public class TileClick : MonoBehaviour
     public TileBase specificTile; // Tile that must be present to allow clicking
     private Tilemap tilemap;
     public TileTimer tileTimer; // Reference to the TileTimer script
+    public Item itemToPickup; // The item associated with the specific tile
+
+    private PickupItem pickupItem; // Reference to the PickupItem script
 
     private void Start()
     {
         // Find the Tilemap component
         tilemap = GetComponentInChildren<Tilemap>();
+        // Find the PickupItem script
+        pickupItem = FindObjectOfType<PickupItem>();
     }
 
     private void Update()
@@ -28,6 +33,13 @@ public class TileClick : MonoBehaviour
                 if (originalTile == specificTile)
                 {
                     ChangeTile(hit.point);
+
+                    // Set the item to be picked up
+                    if (pickupItem != null)
+                    {
+                        pickupItem.SetItemToPickup(itemToPickup);
+                        pickupItem.canPickup = true;
+                    }
 
                     // Check if the tile change is from final to initial
                     if (tileTimer != null)
