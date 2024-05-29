@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -310,7 +311,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 2002339020}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &584626506
 GameObject:
   m_ObjectHideFlags: 0
@@ -13440,7 +13472,7 @@ Transform:
   m_GameObject: {fileID: 1448441717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: -0.1}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13458,13 +13490,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a602c028b3a75743a07793cdf6db7dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSound:
+  plantplacedSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 332904055
+      Data2: 1232396269
+      Data3: 759567527
+      Data4: -317237611
+    Path: event:/SFX/Plant
+  plantharvestSound:
+    Guid:
+      Data1: -979579723
+      Data2: 1323492087
+      Data3: -1660391522
+      Data4: -386522704
+    Path: event:/SFX/Harvest
   startingTileA: {fileID: 11400000, guid: 26bdc35d6820f434499ece76d7fa82fa, type: 2}
   startingTileB: {fileID: 11400000, guid: 3942428dbea58bf4a9ddafb03bf7c49c, type: 2}
   stageOneTileA: {fileID: 11400000, guid: 9c7d355881471f741a71feb5b8f7a46c, type: 2}
