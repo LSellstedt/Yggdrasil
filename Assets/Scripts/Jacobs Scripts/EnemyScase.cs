@@ -7,6 +7,7 @@ public class EnemyScase : MonoBehaviour
     public GameObject player;
     public float speed;
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    public Animator animator;
 
     private float distance;
     public float distanceBetween;
@@ -19,6 +20,9 @@ public class EnemyScase : MonoBehaviour
         // Get the SpriteRenderer component if not assigned
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class EnemyScase : MonoBehaviour
         {
             // Move towards the player
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            animator.SetBool("isWalking", true);
 
             // Check the direction of movement
             if (direction.x < 0 && facingRight)
@@ -49,7 +54,12 @@ public class EnemyScase : MonoBehaviour
                 Flip();
             }
         }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
+    
 
     // Function to flip the sprite
     void Flip()
