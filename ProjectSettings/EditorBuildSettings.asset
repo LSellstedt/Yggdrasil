@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JosefStinky.unity
     guid: d07d11bfc5763460693b8eeac56b712e
+  - enabled: 1
+    path: Assets/Scenes/NIfheim Tileset Scene.unity
+    guid: 512a4974ed7690142be243fd352212b0
   m_configObjects: {}

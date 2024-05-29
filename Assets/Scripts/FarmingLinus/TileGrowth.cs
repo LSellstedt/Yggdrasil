@@ -7,12 +7,22 @@ public class TileGrowth : MonoBehaviour
 {
     public TileBase startingTileA;
     public TileBase startingTileB;
+
     public TileBase stageOneTileA;
     public TileBase stageTwoTileA;
     public TileBase finalStageTileA;
+
     public TileBase stageOneTileB;
     public TileBase stageTwoTileB;
     public TileBase finalStageTileB;
+
+    public TileBase stageOneTileC;
+    public TileBase stageTwoTileC;
+    public TileBase finalStageTileC;
+
+    public TileBase stageOneTileD;
+    public TileBase stageTwoTileD;
+    public TileBase finalStageTileD;
 
     public TileBase tileX; // Assign this in the inspector
     public TileBase tileY; // Assign this in the inspector
@@ -21,7 +31,7 @@ public class TileGrowth : MonoBehaviour
     private Dictionary<Vector3Int, Coroutine> tileCoroutines = new Dictionary<Vector3Int, Coroutine>();
     private Dictionary<TileBase, int> tileScores = new Dictionary<TileBase, int>();
 
-    private bool isPlantingModeA = true;
+    private int plantingMode = 0; // 0 for A, 1 for B, 2 for C, 3 for D
 
     void Start()
     {
@@ -30,14 +40,19 @@ public class TileGrowth : MonoBehaviour
         // Initialize the scores dictionary
         tileScores[tileX] = 0;
         tileScores[tileY] = 0;
+        tileScores[stageOneTileA] = 0;
+        tileScores[stageOneTileB] = 0;
+        tileScores[stageOneTileC] = 0;
+        tileScores[stageOneTileD] = 0;
     }
 
     void Update()
     {
+        // Switch planting modes when 'X' is pressed
         if (Input.GetKeyDown(KeyCode.X))
         {
-            isPlantingModeA = !isPlantingModeA;
-            Debug.Log("Planting mode switched. Current mode: " + (isPlantingModeA ? "A" : "B"));
+            plantingMode = (plantingMode + 1) % 4;
+            Debug.Log("Switched planting mode to: " + (plantingMode == 0 ? "Mode A" : plantingMode == 1 ? "Mode B" : plantingMode == 2 ? "Mode C" : "Mode D"));
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -53,27 +68,35 @@ public class TileGrowth : MonoBehaviour
                 {
                     StopCoroutine(tileCoroutines[tilePosition]);
                 }
-                Coroutine growthCoroutine = StartCoroutine(GrowTile(tilePosition, isPlantingModeA));
+                Coroutine growthCoroutine = StartCoroutine(GrowTile(tilePosition, plantingMode));
                 tileCoroutines[tilePosition] = growthCoroutine;
             }
-            else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB)
+            else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB || clickedTile == finalStageTileC || clickedTile == finalStageTileD)
             {
-                // Update score based on the type of the original tile
-                TileBase originalTile = tilemap.GetTile(tilePosition); // Assuming you stored original tiles somewhere
-
-                if (originalTile == tileX)
+                // Update score based on the type of the final stage tile
+                switch (clickedTile)
                 {
-                    tileScores[tileX]++;
-                    Debug.Log("Tile X score: " + tileScores[tileX]);
-                }
-                else if (originalTile == tileY)
-                {
-                    tileScores[tileY]++;
-                    Debug.Log("Tile Y score: " + tileScores[tileY]);
+                    case TileBase finalStageTile when finalStageTile == finalStageTileA:
+                        tileScores[stageOneTileA]++;
+                        Debug.Log("Mode A score: " + tileScores[stageOneTileA]);
+                        break;
+                    case TileBase finalStageTile when finalStageTile == finalStageTileB:
+                        tileScores[stageOneTileB]++;
+                        Debug.Log("Mode B score: " + tileScores[stageOneTileB]);
+                        break;
+                    case TileBase finalStageTile when finalStageTile == finalStageTileC:
+                        tileScores[stageOneTileC]++;
+                        Debug.Log("Mode C score: " + tileScores[stageOneTileC]);
+                        break;
+                    case TileBase finalStageTile when finalStageTile == finalStageTileD:
+                        tileScores[stageOneTileD]++;
+                        Debug.Log("Mode D score: " + tileScores[stageOneTileD]);
+                        break;
                 }
 
-                // Revert to the appropriate starting tile
-                tilemap.SetTile(tilePosition, startingTileA); // Change this to the appropriate starting tile if needed
+                // Revert to the starting tile A or B
+                tilemap.SetTile(tilePosition, clickedTile == startingTileA ? startingTileA : startingTileB);
+                
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
                     StopCoroutine(tileCoroutines[tilePosition]);
@@ -83,36 +106,43 @@ public class TileGrowth : MonoBehaviour
         }
     }
 
-    private IEnumerator GrowTile(Vector3Int tilePosition, bool isModeA)
+    private IEnumerator GrowTile(Vector3Int tilePosition, int mode)
     {
-        if (isModeA)
+        switch (mode)
         {
-            tilemap.SetTile(tilePosition, stageOneTileA);
-        }
-        else
-        {
-            tilemap.SetTile(tilePosition, stageOneTileB);
-        }
-        yield return new WaitForSeconds(2.0f); // Time between stages
+            case 0:
+                tilemap.SetTile(tilePosition, stageOneTileA);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, stageTwoTileA);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, finalStageTileA);
+                break;
 
-        if (isModeA)
-        {
-            tilemap.SetTile(tilePosition, stageTwoTileA);
-        }
-        else
-        {
-            tilemap.SetTile(tilePosition, stageTwoTileB);
-        }
-        yield return new WaitForSeconds(2.0f);
+            case 1:
+                tilemap.SetTile(tilePosition, stageOneTileB);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, stageTwoTileB);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, finalStageTileB);
+                break;
 
-        if (isModeA)
-        {
-            tilemap.SetTile(tilePosition, finalStageTileA);
+            case 2:
+                tilemap.SetTile(tilePosition, stageOneTileC);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, stageTwoTileC);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, finalStageTileC);
+                break;
+
+            case 3:
+                tilemap.SetTile(tilePosition, stageOneTileD);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, stageTwoTileD);
+                yield return new WaitForSeconds(2.0f);
+                tilemap.SetTile(tilePosition, finalStageTileD);
+                break;
         }
-        else
-        {
-            tilemap.SetTile(tilePosition, finalStageTileB);
-        }
+
         tileCoroutines.Remove(tilePosition);
     }
 }
