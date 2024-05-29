@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using FMODUnity;
 
 public class TileGrowth : MonoBehaviour
 {
+    [SerializeField] private EventReference coinCollectedSound;
     public TileBase startingTileA;
     public TileBase startingTileB;
 
@@ -63,6 +65,7 @@ public class TileGrowth : MonoBehaviour
             TileBase clickedTile = tilemap.GetTile(tilePosition);
             if (clickedTile == startingTileA || clickedTile == startingTileB)
             {
+                AudioManager.instance.PlayOneShot(coinCollectedSound, this.transform.position);
                 // Start the growth process
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
