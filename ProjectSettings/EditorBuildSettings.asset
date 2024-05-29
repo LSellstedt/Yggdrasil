@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Linus PLAYGROUND.unity
     guid: 9a169e81e9aa64e4691164dfbe2b7993
+  - enabled: 1
+    path: Assets/Scenes/JosefStinky.unity
+    guid: d07d11bfc5763460693b8eeac56b712e
   m_configObjects: {}
