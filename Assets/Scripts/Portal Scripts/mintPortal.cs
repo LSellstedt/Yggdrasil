@@ -15,7 +15,7 @@ public class mintPortal : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            SceneManager.LoadScene("Linus PLAYGROUND", LoadSceneMode.Single);
+            SceneManager.LoadScene("hell", LoadSceneMode.Single);
             Debug.Log("Collision");
         }
     }

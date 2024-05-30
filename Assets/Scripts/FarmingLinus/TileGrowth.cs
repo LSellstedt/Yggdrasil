@@ -63,7 +63,7 @@ public class TileGrowth : MonoBehaviour
 
             if (clickedTile == startingTileA || clickedTile == startingTileB)
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.plantplaced, this.transform.position);
+                //AudioManager.instance.PlayOneShot(FMODEvents.instance.plantplaced, this.transform.position);
                 // Start the growth process
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
@@ -74,7 +74,7 @@ public class TileGrowth : MonoBehaviour
             }
             else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB || clickedTile == finalStageTileC)
             {
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.plantharvest, this.transform.position);
+                //AudioManager.instance.PlayOneShot(FMODEvents.instance.plantharvest, this.transform.position);
                 // Update score based on the type of the final stage tile
                 if (!tileScores.ContainsKey(clickedTile))
                 {
@@ -98,9 +98,8 @@ public class TileGrowth : MonoBehaviour
                         break;
                 }
 
-                // Revert to the starting tile A or B based on the current planting mode
-                TileBase newStartingTile = (clickedTile == finalStageTileA || clickedTile == stageOneTileA) ? startingTileA : startingTileB;
-                tilemap.SetTile(tilePosition, newStartingTile);
+                // Revert to the starting tile B for all final stage tiles
+                tilemap.SetTile(tilePosition, startingTileB);
 
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
