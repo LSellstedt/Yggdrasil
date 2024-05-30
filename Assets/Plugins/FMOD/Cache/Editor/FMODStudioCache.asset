@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../../FMOD/YGGDRASIL/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638525861325565023
+  lastModified: 638526710349301416
   FileSizes:
   - Name: Desktop
     Value: 59936
@@ -121,6 +121,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4167385078810973146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MuspMASTERED
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MuspMASTERED
+  Guid:
+    Data1: 2041858510
+    Data2: 1272863518
+    Data3: 1257888386
+    Data4: 549542832
+  Banks:
+  - {fileID: -1023951763449568692}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 74078
+--- !u!114 &-2889746125950736288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/HelMASTERED
+  m_EditorClassIdentifier: 
+  Path: event:/Music/HelMASTERED
+  Guid:
+    Data1: 1703760624
+    Data2: 1187177873
+    Data3: 2141527205
+    Data4: 891988200
+  Banks:
+  - {fileID: -1023951763449568692}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 111875
 --- !u!114 &-1937107512270623808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +190,10 @@ MonoBehaviour:
   Path: ../../FMOD/YGGDRASIL/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638525861324679670
+  lastModified: 638525958386755842
   FileSizes:
   - Name: Desktop
-    Value: 1218
+    Value: 1430
   Exists: 1
 --- !u!114 &-1023951763449568692
 MonoBehaviour:
@@ -156,11 +210,38 @@ MonoBehaviour:
   Path: ../../FMOD/YGGDRASIL/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638525760723386461
+  lastModified: 638525958409972581
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 5564352
   Exists: 1
+--- !u!114 &-1015538309883358712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MilfMASTERED
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MilfMASTERED
+  Guid:
+    Data1: -556344236
+    Data2: 1281241160
+    Data3: -2032770382
+    Data4: 237447061
+  Banks:
+  - {fileID: -1023951763449568692}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 132029
 --- !u!114 &-706156672168752071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,13 +296,44 @@ MonoBehaviour:
   - {fileID: 4565422275395365151}
   - {fileID: 9024335425624930287}
   - {fileID: 2966157588032616086}
+  - {fileID: 60650782427987533}
+  - {fileID: -1015538309883358712}
+  - {fileID: -4167385078810973146}
+  - {fileID: -2889746125950736288}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1924147277597202215}
   StringsBanks:
   - {fileID: -1937107512270623808}
-  cacheTime: 638525861325565023
+  cacheTime: 638526710349301416
   cacheVersion: 131618
+--- !u!114 &60650782427987533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/FARMMASTERED
+  m_EditorClassIdentifier: 
+  Path: event:/Music/FARMMASTERED
+  Guid:
+    Data1: 1174326085
+    Data2: 1206897312
+    Data3: -131516738
+    Data4: -2067099629
+  Banks:
+  - {fileID: -1023951763449568692}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 132000
 --- !u!114 &1176671738156190087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +403,7 @@ MonoBehaviour:
   Path: ../../FMOD/YGGDRASIL/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638525861324669753
+  lastModified: 638525958386730981
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -679,4 +791,4 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 437
+  Length: 500

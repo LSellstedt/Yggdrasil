@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Merchant : MonoBehaviour
 {
+
+    public int gröda;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gröda = 1;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
