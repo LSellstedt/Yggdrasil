@@ -90,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
 using UnityEngine;
 using FMOD.Studio;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     private Scene oldScene;
 
     //portals
-
+    private List<Vector2> portals = new List<Vector2>();
     private Vector2 asgardPortalInPosition = new Vector2(-23.7f, 10.75f);
     private Vector2 asgardPortalOutPosition = new Vector2(-357.72f, 358.04f);
 
@@ -119,7 +120,20 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         temp = rb.position;
         footsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.footsteps);
-        oldScene = SceneManager.GetActiveScene();
+        oldScene = SceneManager.GetActiveScene(); 
+       
+        portals.Add(asgardPortalInPosition);
+        portals.Add(asgardPortalOutPosition);
+
+        portals.Add(milfPortalInPosition);
+        portals.Add(milfPortalOutPosition);
+
+        portals.Add(muspPortalInPosition);
+        portals.Add(muspPortalOutPosition);
+
+        portals.Add(helPortalInPosition);
+        portals.Add(helPortalOutPosition);
+
     }
 
     void Update()
@@ -150,19 +164,22 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (distanceToPortal > 1.6f)
-            {
-                PLAYBACK_STATE playbackState;
-                footsteps.getPlaybackState(out playbackState);
-
-                if (playbackState == PLAYBACK_STATE.STOPPED)
+            for (int i = 0; i < 8;i++)
+            {           
+                if (Vector2.Distance(rb.position, portals[i]) > 1.6f)
                 {
-                    footsteps.start();
+                    PLAYBACK_STATE playbackState;
+                    footsteps.getPlaybackState(out playbackState);
+
+                    if (playbackState == PLAYBACK_STATE.STOPPED)
+                    {
+                        footsteps.start();
+                    }
                 }
-            }
-            else
-            {
-                footsteps.stop(STOP_MODE.ALLOWFADEOUT);
+                else
+                {
+                    footsteps.stop(STOP_MODE.ALLOWFADEOUT);
+                }
             }
         }
         temp = rb.position;
