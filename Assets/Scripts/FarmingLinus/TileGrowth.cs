@@ -101,9 +101,8 @@ public class TileGrowth : MonoBehaviour
                         break;
                 }
 
-                // Revert to the starting tile A or B based on the current planting mode
-                TileBase newStartingTile = (clickedTile == finalStageTileA || clickedTile == stageOneTileA) ? startingTileA : startingTileB;
-                tilemap.SetTile(tilePosition, newStartingTile);
+                // Revert to the starting tile B for all final stage tiles
+                tilemap.SetTile(tilePosition, startingTileB);
 
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {

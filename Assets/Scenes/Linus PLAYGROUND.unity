@@ -3236,15 +3236,12 @@ MonoBehaviour:
   stageOneTileA: {fileID: 11400000, guid: 9c7d355881471f741a71feb5b8f7a46c, type: 2}
   stageTwoTileA: {fileID: 11400000, guid: 92186ee497913494c9a278e14ff34fab, type: 2}
   finalStageTileA: {fileID: 11400000, guid: 70410b086c496f24898f7c46151523b3, type: 2}
-  stageOneTileB: {fileID: 11400000, guid: 947c6fe16e57fdc4b9b2767f695ff10e, type: 2}
-  stageTwoTileB: {fileID: 11400000, guid: 3bdb9a44350a5b9459fdaded0aea42a4, type: 2}
-  finalStageTileB: {fileID: 11400000, guid: 6260a9ddf7846cd4b849ddc514d2b85e, type: 2}
-  stageOneTileC: {fileID: 11400000, guid: ded6806dfe7e8ae44914cc5aad23a3b4, type: 2}
-  stageTwoTileC: {fileID: 11400000, guid: 288efc8977b0b4049b41aa1edb083386, type: 2}
-  finalStageTileC: {fileID: 11400000, guid: 78fce04009275c94c8e73bee3375ab84, type: 2}
-  stageOneTileD: {fileID: 11400000, guid: 017e10854ece21946887c2bcf63756ea, type: 2}
-  stageTwoTileD: {fileID: 11400000, guid: 2915afdbfb19a4147bffc19f6a765138, type: 2}
-  finalStageTileD: {fileID: 11400000, guid: 9c8b70aa27f4632419996f70943bcd71, type: 2}
+  stageOneTileB: {fileID: 11400000, guid: ded6806dfe7e8ae44914cc5aad23a3b4, type: 2}
+  stageTwoTileB: {fileID: 11400000, guid: 288efc8977b0b4049b41aa1edb083386, type: 2}
+  finalStageTileB: {fileID: 11400000, guid: 78fce04009275c94c8e73bee3375ab84, type: 2}
+  stageOneTileC: {fileID: 11400000, guid: 017e10854ece21946887c2bcf63756ea, type: 2}
+  stageTwoTileC: {fileID: 11400000, guid: 2915afdbfb19a4147bffc19f6a765138, type: 2}
+  finalStageTileC: {fileID: 11400000, guid: 9c8b70aa27f4632419996f70943bcd71, type: 2}
   tileX: {fileID: 11400000, guid: 70410b086c496f24898f7c46151523b3, type: 2}
   tileY: {fileID: 11400000, guid: bfbc76a03d1fc884f87782ad9ca3f989, type: 2}
 --- !u!1 &2114936148
