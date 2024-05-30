@@ -41,16 +41,13 @@ public class TileGrowth : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
 
         // Initialize the scores dictionary
-        tileScores[tileX] = 0;
-        tileScores[tileY] = 0;
-        tileScores[stageOneTileA] = 0;
-        tileScores[stageOneTileB] = 0;
-        tileScores[stageOneTileC] = 0;
-        tileScores[stageOneTileD] = 0;
-        tileScores[finalStageTileA] = 0;  // Ensure these are initialized as well
+        tileScores[finalStageTileA] = 0;
         tileScores[finalStageTileB] = 0;
         tileScores[finalStageTileC] = 0;
         tileScores[finalStageTileD] = 0;
+
+        // Logging to verify initialization
+        Debug.Log("Initialized tileScores dictionary with final stage tiles.");
     }
 
     void Update()
@@ -68,6 +65,10 @@ public class TileGrowth : MonoBehaviour
             Vector3Int tilePosition = tilemap.WorldToCell(mouseWorldPos);
 
             TileBase clickedTile = tilemap.GetTile(tilePosition);
+
+            // Logging to see which tile was clicked
+            Debug.Log("Clicked tile: " + (clickedTile != null ? clickedTile.name : "null"));
+
             if (clickedTile == startingTileA || clickedTile == startingTileB)
             {
                 //AudioManager.instance.PlayOneShot(plantplacedSound, this.transform.position);
@@ -85,33 +86,34 @@ public class TileGrowth : MonoBehaviour
                 // Update score based on the type of the final stage tile
                 if (!tileScores.ContainsKey(clickedTile))
                 {
-                    Debug.LogError("Tile not found in scores dictionary: " + clickedTile.name);
+                    Debug.LogError("Tile not found in scores dictionary: " + (clickedTile != null ? clickedTile.name : "null"));
                     return;
                 }
 
                 switch (clickedTile)
                 {
                     case TileBase finalStageTile when finalStageTile == finalStageTileA:
-                        tileScores[stageOneTileA]++;
-                        Debug.Log("Mode A score: " + tileScores[stageOneTileA]);
+                        tileScores[finalStageTileA]++;
+                        Debug.Log("Mode A score: " + tileScores[finalStageTileA]);
                         break;
                     case TileBase finalStageTile when finalStageTile == finalStageTileB:
-                        tileScores[stageOneTileB]++;
-                        Debug.Log("Mode B score: " + tileScores[stageOneTileB]);
+                        tileScores[finalStageTileB]++;
+                        Debug.Log("Mode B score: " + tileScores[finalStageTileB]);
                         break;
                     case TileBase finalStageTile when finalStageTile == finalStageTileC:
-                        tileScores[stageOneTileC]++;
-                        Debug.Log("Mode C score: " + tileScores[stageOneTileC]);
+                        tileScores[finalStageTileC]++;
+                        Debug.Log("Mode C score: " + tileScores[finalStageTileC]);
                         break;
                     case TileBase finalStageTile when finalStageTile == finalStageTileD:
-                        tileScores[stageOneTileD]++;
-                        Debug.Log("Mode D score: " + tileScores[stageOneTileD]);
+                        tileScores[finalStageTileD]++;
+                        Debug.Log("Mode D score: " + tileScores[finalStageTileD]);
                         break;
                 }
 
-                // Revert to the starting tile A or B
-                tilemap.SetTile(tilePosition, clickedTile == startingTileA ? startingTileA : startingTileB);
-                
+                // Revert to the starting tile A or B based on the current planting mode
+                TileBase newStartingTile = (clickedTile == finalStageTileA || clickedTile == stageOneTileA) ? startingTileA : startingTileB;
+                tilemap.SetTile(tilePosition, newStartingTile);
+
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
                     StopCoroutine(tileCoroutines[tilePosition]);
