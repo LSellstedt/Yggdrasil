@@ -21,10 +21,9 @@ public class Player : MonoBehaviour
         footsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.footsteps);
     }
 
-    // Update is called once per frame
-    void Update()
+
+     void Update()
     {
-        // Get the input from the player
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -62,11 +61,9 @@ public class Player : MonoBehaviour
     UpdateSound();
     }
 
-    // FixedUpdate is called at a fixed interval and is used for physics calculations
     void FixedUpdate()
     {
-        // Move the player
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position +  movement * moveSpeed * Time.fixedDeltaTime);
     }
     private void UpdateSound()
     {
