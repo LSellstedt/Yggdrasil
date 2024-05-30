@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     public EventInstance footsteps;
     private Rigidbody2D rb;
     private Vector2 movement;
-    private Vector2 temp;
+    private Vector2 oldpos;
     private Scene oldScene;
 
     //portals
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        temp = rb.position;
+        oldpos = rb.position;
         footsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.footsteps);
         oldScene = SceneManager.GetActiveScene(); 
        
@@ -158,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
         float distanceToPortal = Vector2.Distance(rb.position, asgardPortalOutPosition);
         Debug.Log($"Player Position: {rb.position}, Portal Position: {asgardPortalOutPosition}, Distance to Portal: {distanceToPortal}");
 
-        if (temp == rb.position)
+        if (oldpos == rb.position)
         {
             footsteps.stop(STOP_MODE.ALLOWFADEOUT);
         }
@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        temp = rb.position;
+        oldpos = rb.position;
 
         if (oldScene != SceneManager.GetActiveScene())
         {

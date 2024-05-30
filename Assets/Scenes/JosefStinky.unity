@@ -13963,18 +13963,18 @@ MonoBehaviour:
     Path: event:/SFX/Footsteps
   <plantplaced>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 332904055
+      Data2: 1232396269
+      Data3: 759567527
+      Data4: -317237611
+    Path: event:/SFX/Plant
   <plantharvest>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -979579723
+      Data2: 1323492087
+      Data3: -1660391522
+      Data4: -386522704
+    Path: event:/SFX/Harvest
 --- !u!1 &1387047529
 GameObject:
   m_ObjectHideFlags: 0
