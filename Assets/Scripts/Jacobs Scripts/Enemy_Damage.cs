@@ -10,14 +10,28 @@ public class Enemy_Damage : MonoBehaviour
     public float stunDuration = 1f; // Duration to be stunned
     public float knockBackForce = 10f; // Force of the knock-back
     public float knockBackDuration = 0.2f; // Duration of the knock-back effect
+    public float blinkDuration = 0.1f; // Duration of each blink
+    public int blinkTimes = 3; // Number of blinks
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
     private void Start()
     {
         currentHealth = maxHealth;
         enemyCollider = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+        else
+        {
+            Debug.LogError("SpriteRenderer component missing on enemy.");
+        }
     }
 
     public void EnemyTakeDamage(int damage)
@@ -30,6 +44,7 @@ public class Enemy_Damage : MonoBehaviour
         }
         else
         {
+            StartCoroutine(BlinkRed());
             StartCoroutine(KnockBackAndStun());
         }
     }
@@ -45,6 +60,7 @@ public class Enemy_Damage : MonoBehaviour
         {
             enemyCollider.enabled = false; // Disabling the collider
         }
+        StartCoroutine(TurnRedAndDisableSprite(1f));
     }
 
     IEnumerator KnockBackAndStun()
@@ -65,6 +81,24 @@ public class Enemy_Damage : MonoBehaviour
             yield return new WaitForSeconds(stunDuration);
             EnemyScase.GetComponent<EnemyScase>().isStunned = false;
         }
+    }
+
+    IEnumerator BlinkRed()
+    {
+        for (int i = 0; i < blinkTimes; i++)
+        {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(blinkDuration);
+            spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(blinkDuration);
+        }
+    }
+
+    IEnumerator TurnRedAndDisableSprite(float delay)
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.enabled = false; // Disabling the sprite
     }
 
     [SerializeField] private float damage;

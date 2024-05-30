@@ -47,6 +47,10 @@ public class TileGrowth : MonoBehaviour
         tileScores[stageOneTileB] = 0;
         tileScores[stageOneTileC] = 0;
         tileScores[stageOneTileD] = 0;
+        tileScores[finalStageTileA] = 0;  // Ensure these are initialized as well
+        tileScores[finalStageTileB] = 0;
+        tileScores[finalStageTileC] = 0;
+        tileScores[finalStageTileD] = 0;
     }
 
     void Update()
@@ -66,7 +70,7 @@ public class TileGrowth : MonoBehaviour
             TileBase clickedTile = tilemap.GetTile(tilePosition);
             if (clickedTile == startingTileA || clickedTile == startingTileB)
             {
-                AudioManager.instance.PlayOneShot(plantplacedSound, this.transform.position);
+                //AudioManager.instance.PlayOneShot(plantplacedSound, this.transform.position);
                 // Start the growth process
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
@@ -77,8 +81,14 @@ public class TileGrowth : MonoBehaviour
             }
             else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB || clickedTile == finalStageTileC || clickedTile == finalStageTileD)
             {
-                AudioManager.instance.PlayOneShot(plantharvestSound, this.transform.position);
+                //AudioManager.instance.PlayOneShot(plantharvestSound, this.transform.position);
                 // Update score based on the type of the final stage tile
+                if (!tileScores.ContainsKey(clickedTile))
+                {
+                    Debug.LogError("Tile not found in scores dictionary: " + clickedTile.name);
+                    return;
+                }
+
                 switch (clickedTile)
                 {
                     case TileBase finalStageTile when finalStageTile == finalStageTileA:

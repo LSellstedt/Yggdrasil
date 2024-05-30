@@ -3217,14 +3217,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a602c028b3a75743a07793cdf6db7dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantplacedSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  plantharvestSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   startingTileA: {fileID: 11400000, guid: 26bdc35d6820f434499ece76d7fa82fa, type: 2}
   startingTileB: {fileID: 11400000, guid: 3942428dbea58bf4a9ddafb03bf7c49c, type: 2}
   stageOneTileA: {fileID: 11400000, guid: 9c7d355881471f741a71feb5b8f7a46c, type: 2}
   stageTwoTileA: {fileID: 11400000, guid: 92186ee497913494c9a278e14ff34fab, type: 2}
   finalStageTileA: {fileID: 11400000, guid: 70410b086c496f24898f7c46151523b3, type: 2}
-  stageOneTileB: {fileID: 11400000, guid: d5a187a11ba25be4d9299344798cba42, type: 2}
-  stageTwoTileB: {fileID: 11400000, guid: e13632c9aea0d8e49904d64a28cec2ca, type: 2}
-  finalStageTileB: {fileID: 11400000, guid: bfbc76a03d1fc884f87782ad9ca3f989, type: 2}
+  stageOneTileB: {fileID: 11400000, guid: 947c6fe16e57fdc4b9b2767f695ff10e, type: 2}
+  stageTwoTileB: {fileID: 11400000, guid: 3bdb9a44350a5b9459fdaded0aea42a4, type: 2}
+  finalStageTileB: {fileID: 11400000, guid: 6260a9ddf7846cd4b849ddc514d2b85e, type: 2}
   stageOneTileC: {fileID: 11400000, guid: ded6806dfe7e8ae44914cc5aad23a3b4, type: 2}
   stageTwoTileC: {fileID: 11400000, guid: 288efc8977b0b4049b41aa1edb083386, type: 2}
   finalStageTileC: {fileID: 11400000, guid: 78fce04009275c94c8e73bee3375ab84, type: 2}

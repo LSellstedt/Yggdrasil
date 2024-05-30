@@ -289,7 +289,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011728853, y: -0.023457736}
+  m_Offset: {x: -0.011728853, y: 0.005587131}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -300,7 +300,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7732423, y: 1.8444767}
+  m_Size: {x: 0.7732423, y: 1.4544442}
   m_EdgeRadius: 0
 --- !u!114 &304047307
 MonoBehaviour:
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 304047301}
-  speed: 1.5
+  speed: 2
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
   distanceBetween: 5
@@ -1087,9 +1087,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   EnemyScase: {fileID: 1973669553}
-  stunDuration: 0.4
+  stunDuration: 0.2
   knockBackForce: 5
   knockBackDuration: 0.2
+  blinkDuration: 0.2
+  blinkTimes: 2
   damage: 1
 --- !u!50 &1973669558
 Rigidbody2D:
