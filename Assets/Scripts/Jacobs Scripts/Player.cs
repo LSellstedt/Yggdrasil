@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMOD.Studio;
 
 public class Player : MonoBehaviour
 {
@@ -7,11 +8,17 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private Vector2 lastMovementDirection;
+  
+    //audio jangel
+    private Vector2 oldpos;
+    private EventInstance footsteps;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        oldpos = rb.position;
+        footsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.footsteps);
     }
 
     // Update is called once per frame
@@ -52,6 +59,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    UpdateSound();
     }
 
     // FixedUpdate is called at a fixed interval and is used for physics calculations
@@ -59,5 +67,24 @@ public class Player : MonoBehaviour
     {
         // Move the player
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+    private void UpdateSound()
+    {
+        if (oldpos != rb.position)
+        {
+            PLAYBACK_STATE playbackState;
+            footsteps.getPlaybackState(out playbackState);
+
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                footsteps.start();
+            }
+        }
+        else // ur mom :3
+        {
+            footsteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+        oldpos = rb.position;
+
     }
 }

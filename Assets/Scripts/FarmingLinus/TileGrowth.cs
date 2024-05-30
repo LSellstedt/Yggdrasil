@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using FMODUnity;
 
 public class TileGrowth : MonoBehaviour
 {
-    [SerializeField] private EventReference plantplacedSound;
-    [SerializeField] private EventReference plantharvestSound;
     public TileBase startingTileA;
     public TileBase startingTileB;
 
@@ -66,7 +63,7 @@ public class TileGrowth : MonoBehaviour
             TileBase clickedTile = tilemap.GetTile(tilePosition);
             if (clickedTile == startingTileA || clickedTile == startingTileB)
             {
-                AudioManager.instance.PlayOneShot(plantplacedSound, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.plantplaced, this.transform.position);
                 // Start the growth process
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
@@ -77,7 +74,7 @@ public class TileGrowth : MonoBehaviour
             }
             else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB || clickedTile == finalStageTileC || clickedTile == finalStageTileD)
             {
-                AudioManager.instance.PlayOneShot(plantharvestSound, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.plantharvest, this.transform.position);
                 // Update score based on the type of the final stage tile
                 switch (clickedTile)
                 {
