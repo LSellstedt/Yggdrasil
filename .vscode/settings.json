@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Yggdrasil.sln"
+    "dotnet.defaultSolution": "Yggdrasil.sln",
+    "dotnet.preferCSharpExtension": true
 }
