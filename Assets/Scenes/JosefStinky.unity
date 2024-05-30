@@ -14660,58 +14660,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1480857416
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1480857418}
-  - component: {fileID: 1480857417}
-  m_Layer: 0
-  m_Name: FootStepManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1480857417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480857416}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28abb29d168e0824bbb4fc5e02cb7cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footstepEvent:
-    Guid:
-      Data1: -791729948
-      Data2: 1173911533
-      Data3: 721466779
-      Data4: -1573642189
-    Path: event:/SFX/Footsteps
-  stepInterval: 0.5
---- !u!4 &1480857418
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480857416}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.57984, y: -0.6818049, z: -0.2022972}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534642670
 GameObject:
   m_ObjectHideFlags: 0
@@ -18368,8 +18316,6 @@ GameObject:
   - component: {fileID: 2002339022}
   - component: {fileID: 2002339021}
   - component: {fileID: 2002339025}
-  - component: {fileID: 2002339026}
-  - component: {fileID: 2002339027}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -18530,57 +18476,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8089831, y: 0.83503085}
   m_EdgeRadius: 0
---- !u!114 &2002339026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002339020}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57168c53f4b38e84099c95962dcf6730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footstepEvent:
-    Guid:
-      Data1: -791729948
-      Data2: 1173911533
-      Data3: 721466779
-      Data4: -1573642189
-    Path: event:/SFX/Footsteps
-  stepInterval: 0.5
---- !u!114 &2002339027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002339020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: Untagged
-  EventReference:
-    Guid:
-      Data1: -791729948
-      Data2: 1173911533
-      Data3: 721466779
-      Data4: -1573642189
-    Path: event:/SFX/Footsteps
-  Event: 
-  PlayEvent: 0
-  StopEvent: 9
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 1
-  AllowNonRigidbodyDoppler: 1
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &2019604199
 GameObject:
   m_ObjectHideFlags: 0
@@ -18758,4 +18653,3 @@ SceneRoots:
   - {fileID: 1387047533}
   - {fileID: 1534642672}
   - {fileID: 906219414}
-  - {fileID: 1480857418}

@@ -64,18 +64,18 @@ public class Player : MonoBehaviour
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
            animator.SetFloat("Speed", movement.sqrMagnitude);
-    
-        UpdateSound();
+
      }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position +  movement * moveSpeed * Time.fixedDeltaTime);
+        UpdateSound();
     }
     private void UpdateSound()
     {
-        float distanceToPortal = Vector2.Distance(rb.position, asgardPortalOutPosition);
-        Debug.Log($"Player Position: {rb.position}, Portal Position: {asgardPortalOutPosition}, Distance to Portal: {distanceToPortal}");
+        float distanceToPortal = Vector2.Distance(rb.position, muspPortalOutPosition);
+        Debug.Log($"Player Position: {rb.position}, Portal Position: {muspPortalOutPosition}, Distance to Portal: {distanceToPortal}");
 
         if (oldpos == rb.position)
         {
