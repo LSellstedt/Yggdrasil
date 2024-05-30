@@ -99,7 +99,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Vector2 temp;
     private Scene oldScene;
-    private Vector2 gulPortalPosition = new Vector2(-23.7f, 10.75f);
+
+    //portals
+
+    private Vector2 asgardPortalInPosition = new Vector2(-23.7f, 10.75f);
+    private Vector2 asgardPortalOutPosition = new Vector2(-357.72f, 358.04f);
+
+    private Vector2 milfPortalInPosition = new Vector2(-33.67f, 5.81f);
+    private Vector2 milfPortalOutPosition = new Vector2(638.8368f, 950.3328f);
+
+    private Vector2 muspPortalInPosition = new Vector2(-33.77f, -6.32f);
+    private Vector2 muspPortalOutPosition = new Vector2(637.2997f, 3.9f);
+
+    private Vector2 helPortalInPosition = new Vector2(-23.74f, -12.09f);
+    private Vector2 helPortalOutPosition = new Vector2(4.03f, 1266.18f);
 
     void Start()
     {
@@ -128,8 +141,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateSound()
     {
-        float distanceToPortal = Vector2.Distance(rb.position, gulPortalPosition);
-        Debug.Log($"Player Position: {rb.position}, Portal Position: {gulPortalPosition}, Distance to Portal: {distanceToPortal}");
+        float distanceToPortal = Vector2.Distance(rb.position, asgardPortalOutPosition);
+        Debug.Log($"Player Position: {rb.position}, Portal Position: {asgardPortalOutPosition}, Distance to Portal: {distanceToPortal}");
 
         if (temp == rb.position)
         {
