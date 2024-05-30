@@ -4,18 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class mintPortal : MonoBehaviour
-{
-
-   
-
-
+{   
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,6 +18,5 @@ public class mintPortal : MonoBehaviour
             SceneManager.LoadScene("Linus PLAYGROUND", LoadSceneMode.Single);
             Debug.Log("Collision");
         }
-
     }
 }

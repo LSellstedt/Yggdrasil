@@ -18,7 +18,5 @@ public class orangePortal : MonoBehaviour
             SceneManager.LoadScene("Muspelheim", LoadSceneMode.Single);
             Debug.Log("Collision");
         }
-
     }
-
 }
