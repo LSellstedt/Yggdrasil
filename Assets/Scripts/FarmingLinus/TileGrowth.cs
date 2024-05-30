@@ -23,10 +23,6 @@ public class TileGrowth : MonoBehaviour
     public TileBase stageTwoTileC;
     public TileBase finalStageTileC;
 
-    public TileBase stageOneTileD;
-    public TileBase stageTwoTileD;
-    public TileBase finalStageTileD;
-
     public TileBase tileX; // Assign this in the inspector
     public TileBase tileY; // Assign this in the inspector
 
@@ -34,19 +30,19 @@ public class TileGrowth : MonoBehaviour
     private Dictionary<Vector3Int, Coroutine> tileCoroutines = new Dictionary<Vector3Int, Coroutine>();
     private Dictionary<TileBase, int> tileScores = new Dictionary<TileBase, int>();
 
-    private int plantingMode = 0; // 0 for A, 1 for B, 2 for C, 3 for D
+    private int plantingMode = 0; // 0 for A, 1 for B, 2 for C
 
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
 
         // Initialize the scores dictionary
-        tileScores[tileX] = 0;
-        tileScores[tileY] = 0;
-        tileScores[stageOneTileA] = 0;
-        tileScores[stageOneTileB] = 0;
-        tileScores[stageOneTileC] = 0;
-        tileScores[stageOneTileD] = 0;
+        tileScores[finalStageTileA] = 0;
+        tileScores[finalStageTileB] = 0;
+        tileScores[finalStageTileC] = 0;
+
+        // Logging to verify initialization
+        Debug.Log("Initialized tileScores dictionary with final stage tiles.");
     }
 
     void Update()
@@ -54,8 +50,8 @@ public class TileGrowth : MonoBehaviour
         // Switch planting modes when 'X' is pressed
         if (Input.GetKeyDown(KeyCode.X))
         {
-            plantingMode = (plantingMode + 1) % 4;
-            Debug.Log("Switched planting mode to: " + (plantingMode == 0 ? "Mode A" : plantingMode == 1 ? "Mode B" : plantingMode == 2 ? "Mode C" : "Mode D"));
+            plantingMode = (plantingMode + 1) % 3;
+            Debug.Log("Switched planting mode to: " + (plantingMode == 0 ? "Mode A" : plantingMode == 1 ? "Mode B" : "Mode C"));
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -64,9 +60,13 @@ public class TileGrowth : MonoBehaviour
             Vector3Int tilePosition = tilemap.WorldToCell(mouseWorldPos);
 
             TileBase clickedTile = tilemap.GetTile(tilePosition);
+
+            // Logging to see which tile was clicked
+            Debug.Log("Clicked tile: " + (clickedTile != null ? clickedTile.name : "null"));
+
             if (clickedTile == startingTileA || clickedTile == startingTileB)
             {
-                AudioManager.instance.PlayOneShot(plantplacedSound, this.transform.position);
+                //AudioManager.instance.PlayOneShot(plantplacedSound, this.transform.position);
                 // Start the growth process
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
@@ -75,33 +75,36 @@ public class TileGrowth : MonoBehaviour
                 Coroutine growthCoroutine = StartCoroutine(GrowTile(tilePosition, plantingMode));
                 tileCoroutines[tilePosition] = growthCoroutine;
             }
-            else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB || clickedTile == finalStageTileC || clickedTile == finalStageTileD)
+            else if (clickedTile == finalStageTileA || clickedTile == finalStageTileB || clickedTile == finalStageTileC)
             {
-                AudioManager.instance.PlayOneShot(plantharvestSound, this.transform.position);
+                //AudioManager.instance.PlayOneShot(plantharvestSound, this.transform.position);
                 // Update score based on the type of the final stage tile
+                if (!tileScores.ContainsKey(clickedTile))
+                {
+                    Debug.LogError("Tile not found in scores dictionary: " + (clickedTile != null ? clickedTile.name : "null"));
+                    return;
+                }
+
                 switch (clickedTile)
                 {
                     case TileBase finalStageTile when finalStageTile == finalStageTileA:
-                        tileScores[stageOneTileA]++;
-                        Debug.Log("Mode A score: " + tileScores[stageOneTileA]);
+                        tileScores[finalStageTileA]++;
+                        Debug.Log("Mode A score: " + tileScores[finalStageTileA]);
                         break;
                     case TileBase finalStageTile when finalStageTile == finalStageTileB:
-                        tileScores[stageOneTileB]++;
-                        Debug.Log("Mode B score: " + tileScores[stageOneTileB]);
+                        tileScores[finalStageTileB]++;
+                        Debug.Log("Mode B score: " + tileScores[finalStageTileB]);
                         break;
                     case TileBase finalStageTile when finalStageTile == finalStageTileC:
-                        tileScores[stageOneTileC]++;
-                        Debug.Log("Mode C score: " + tileScores[stageOneTileC]);
-                        break;
-                    case TileBase finalStageTile when finalStageTile == finalStageTileD:
-                        tileScores[stageOneTileD]++;
-                        Debug.Log("Mode D score: " + tileScores[stageOneTileD]);
+                        tileScores[finalStageTileC]++;
+                        Debug.Log("Mode C score: " + tileScores[finalStageTileC]);
                         break;
                 }
 
-                // Revert to the starting tile A or B
-                tilemap.SetTile(tilePosition, clickedTile == startingTileA ? startingTileA : startingTileB);
-                
+                // Revert to the starting tile A or B based on the current planting mode
+                TileBase newStartingTile = (clickedTile == finalStageTileA || clickedTile == stageOneTileA) ? startingTileA : startingTileB;
+                tilemap.SetTile(tilePosition, newStartingTile);
+
                 if (tileCoroutines.ContainsKey(tilePosition))
                 {
                     StopCoroutine(tileCoroutines[tilePosition]);
@@ -137,14 +140,6 @@ public class TileGrowth : MonoBehaviour
                 tilemap.SetTile(tilePosition, stageTwoTileC);
                 yield return new WaitForSeconds(2.0f);
                 tilemap.SetTile(tilePosition, finalStageTileC);
-                break;
-
-            case 3:
-                tilemap.SetTile(tilePosition, stageOneTileD);
-                yield return new WaitForSeconds(2.0f);
-                tilemap.SetTile(tilePosition, stageTwoTileD);
-                yield return new WaitForSeconds(2.0f);
-                tilemap.SetTile(tilePosition, finalStageTileD);
                 break;
         }
 
