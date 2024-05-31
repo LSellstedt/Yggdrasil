@@ -156,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateSound()
     {
         float distanceToPortal = Vector2.Distance(rb.position, asgardPortalOutPosition);
-        Debug.Log($"Player Position: {rb.position}, Portal Position: {asgardPortalOutPosition}, Distance to Portal: {distanceToPortal}");
+        //Debug.Log($"Player Position: {rb.position}, Portal Position: {asgardPortalOutPosition}, Distance to Portal: {distanceToPortal}");
 
         if (oldpos == rb.position)
         {
