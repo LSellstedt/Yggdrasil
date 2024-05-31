@@ -14262,6 +14262,13 @@ MonoBehaviour:
       Data3: 228582846
       Data4: 1461801996
     Path: event:/SFX/Pickup
+  <playerAttack>k__BackingField:
+    Guid:
+      Data1: 190370103
+      Data2: 1257917728
+      Data3: -1696999759
+      Data4: -11942049
+    Path: event:/SFX/PlayerAttack
   <plantplaced>k__BackingField:
     Guid:
       Data1: 332904055
