@@ -25,18 +25,19 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-        
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);        
         if (currentHealth >  0)
         {
             //Player hurt
             StartCoroutine(Invunerability());
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.loseLife, this.transform.position);
         }
         else
         {
             //Player dead
             if (!dead)
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.unlifed, this.transform.position);
                 //player dead
                 GetComponent<Player>().enabled = false;
                 GetComponent<SpriteRenderer>().enabled = false;
@@ -44,6 +45,10 @@ public class Health : MonoBehaviour
                 SceneManager.LoadScene("MainMenuScene");
 
                 dead = true;
+
+            }
+            else
+            {
 
             }
         }

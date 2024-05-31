@@ -12868,11 +12868,11 @@ MonoBehaviour:
   CollisionTag: Player
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1174326085
+      Data2: 1206897312
+      Data3: -131516738
+      Data4: -2067099629
+    Path: event:/Music/FARMMASTERED
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -13954,6 +13954,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8d846bf646dd44888123680322f06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <loseLife>k__BackingField:
+    Guid:
+      Data1: -1166753292
+      Data2: 1144412988
+      Data3: 1331153304
+      Data4: -1426511601
+    Path: event:/SFX/PlayerTakesDmg
+  <unlifed>k__BackingField:
+    Guid:
+      Data1: -822595722
+      Data2: 1236850622
+      Data3: 1568208285
+      Data4: -685988384
+    Path: event:/SFX/PlayerDeath
   <footsteps>k__BackingField:
     Guid:
       Data1: -791729948
@@ -13961,6 +13975,13 @@ MonoBehaviour:
       Data3: 721466779
       Data4: -1573642189
     Path: event:/SFX/Footsteps
+  <lifeup>k__BackingField:
+    Guid:
+      Data1: 307044139
+      Data2: 1208231620
+      Data3: 228582846
+      Data4: 1461801996
+    Path: event:/SFX/Pickup
   <plantplaced>k__BackingField:
     Guid:
       Data1: 332904055

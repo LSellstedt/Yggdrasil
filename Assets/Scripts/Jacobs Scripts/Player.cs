@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     //audio jangel
     private Vector2 oldpos;
     private EventInstance footsteps;
+    Health health;
 
     //portals
     private List<Vector2> portals = new List<Vector2>();
@@ -74,9 +75,6 @@ public class Player : MonoBehaviour
     }
     private void UpdateSound()
     {
-        float distanceToPortal = Vector2.Distance(rb.position, muspPortalOutPosition);
-        Debug.Log($"Player Position: {rb.position}, Portal Position: {muspPortalOutPosition}, Distance to Portal: {distanceToPortal}");
-
         if (oldpos == rb.position)
         {
             footsteps.stop(STOP_MODE.ALLOWFADEOUT);
@@ -100,7 +98,7 @@ public class Player : MonoBehaviour
                     footsteps.stop(STOP_MODE.ALLOWFADEOUT);
                 }
             }
-        }
+        }                
         oldpos = rb.position;
     }
 }

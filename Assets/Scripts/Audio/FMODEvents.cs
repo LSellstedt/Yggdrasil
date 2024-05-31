@@ -4,13 +4,13 @@ using UnityEngine;
 using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
-{
-    //if stops work enable
-   /* [field: Header("Music")]
-    [field: SerializeField] public EventReference music {  get; private set; }*/
-    
+{    
     [field: Header("Player SFX")]
+    [field: SerializeField] public EventReference loseLife { get; private set; }
+    [field: SerializeField] public EventReference unlifed { get; private set; }
     [field: SerializeField] public EventReference footsteps { get; private set; }
+    [field: SerializeField] public EventReference lifeup { get; private set; }
+
     [field: Header("Farm SFX")]
     [field: SerializeField] public EventReference plantplaced { get; private set; }
     [field: SerializeField] public EventReference plantharvest { get; private set; }

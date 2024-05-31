@@ -7715,6 +7715,7 @@ GameObject:
   - component: {fileID: 907319305}
   - component: {fileID: 907319307}
   - component: {fileID: 907319306}
+  - component: {fileID: 907319308}
   m_Layer: 0
   m_Name: Niflheim Tilemap
   m_TagString: Untagged
@@ -40336,6 +40337,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &907319308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907319304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 41442481
+      Data2: 1148523443
+      Data3: 1236279701
+      Data4: 1028603081
+    Path: event:/Music/MilfMASTERED
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &950828314
 GameObject:
   m_ObjectHideFlags: 0
