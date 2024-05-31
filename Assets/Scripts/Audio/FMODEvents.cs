@@ -10,6 +10,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference unlifed { get; private set; }
     [field: SerializeField] public EventReference footsteps { get; private set; }
     [field: SerializeField] public EventReference lifeup { get; private set; }
+    [field: SerializeField] public EventReference playerAttack { get; private set; }
 
     [field: Header("Farm SFX")]
     [field: SerializeField] public EventReference plantplaced { get; private set; }
