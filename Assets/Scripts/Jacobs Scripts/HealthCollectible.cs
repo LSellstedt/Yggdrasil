@@ -10,6 +10,7 @@ public class HealthCollectible : MonoBehaviour
     {
         if (collision.tag == "Player") 
         {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.lifeup, this.transform.position);
             collision.GetComponent<Health>().AddHealth(healthValue);
             gameObject.SetActive(false);
         }

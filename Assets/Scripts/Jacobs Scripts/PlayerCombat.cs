@@ -25,6 +25,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.playerAttack, this.transform.position);
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }

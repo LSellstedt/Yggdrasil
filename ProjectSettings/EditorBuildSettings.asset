@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MainMenuScene.unity
     guid: c43f054d50f5e9144905181fdf556976
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EnemyScene.unity
     guid: ef31fffdc97131244ae7fcfa439a0eb0
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Linus PLAYGROUND.unity
     guid: 9a169e81e9aa64e4691164dfbe2b7993
   - enabled: 1
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Muspelheim.unity
     guid: cdc79e4610e0f4957a1825f470df36e9
+  - enabled: 1
+    path: Assets/Scenes/hell.unity
+    guid: eebb4ebf621fc974196ecde997d4628d
   m_configObjects: {}

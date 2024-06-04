@@ -18,7 +18,5 @@ public class blåPortal : MonoBehaviour
             SceneManager.LoadScene("NIfheim Tileset Scene", LoadSceneMode.Single);
             Debug.Log("Collision");
         }
-
     }
-
 }

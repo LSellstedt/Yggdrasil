@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.SceneManagement;
 using System;
 
 public class AudioManager : MonoBehaviour
@@ -18,34 +19,14 @@ public class AudioManager : MonoBehaviour
         }
         instance = this;
     }
-   /* private void Start()
+
+
+    /*void OnTriggerEnter2D(Collider2D collision)
     {
-        InitializeMusic(FMODEvents.instance.music);
-    }
-
-
-    private void InitializeMusic(EventReference musicEventReference)
-    {
-        musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        musicEventInstance = CreateEventInstance(musicEventReference);
-        musicEventInstance.start();
-        
-        PLAYBACK_STATE playbackState;
-        musicEventInstance.getPlaybackState(out playbackState);
-
-        if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-        {
-            musicEventInstance = CreateEventInstance(musicEventReference);
-            musicEventInstance.start();
-        }
-        else
-        {
-            musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }     
-        
-    }
-   */ 
-
+        SceneManager.GetActiveScene();
+            SceneManager.LoadScene("Linus PLAYGROUND", LoadSceneMode.Single);
+            Debug.Log("Collision");
+    }*/
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
