@@ -14241,6 +14241,13 @@ MonoBehaviour:
       Data3: 1331153304
       Data4: -1426511601
     Path: event:/SFX/PlayerTakesDmg
+  <backFlip>k__BackingField:
+    Guid:
+      Data1: 250712528
+      Data2: 1094307143
+      Data3: 923729322
+      Data4: -2079467294
+    Path: event:/SFX/ButtonClick
   <unlifed>k__BackingField:
     Guid:
       Data1: -822595722

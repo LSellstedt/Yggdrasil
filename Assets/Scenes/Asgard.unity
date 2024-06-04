@@ -2811,6 +2811,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8d846bf646dd44888123680322f06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <loseLife>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <backFlip>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <unlifed>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <footsteps>k__BackingField:
     Guid:
       Data1: -791729948
@@ -2818,6 +2839,20 @@ MonoBehaviour:
       Data3: 721466779
       Data4: -1573642189
     Path: event:/SFX/Footsteps
+  <lifeup>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <playerAttack>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <plantplaced>k__BackingField:
     Guid:
       Data1: 0
