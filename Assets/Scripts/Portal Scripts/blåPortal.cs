@@ -13,7 +13,7 @@ public class blåPortal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("NIfheim Tileset Scene", LoadSceneMode.Single);
             Debug.Log("Collision");

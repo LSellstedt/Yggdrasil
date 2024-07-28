@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class grönPortal : MonoBehaviour
 {
+    public Vector3 spawnPosition; // Set this in the Inspector to the desired spawn position
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +17,12 @@ public class grönPortal : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            // Set the spawn position before loading the new scene
+            Spawnpoint.playerSpawnPosition = spawnPosition;
+
+            // Load the new scene
             SceneManager.LoadScene("JosefStinky", LoadSceneMode.Single);
             Debug.Log("Collision");
         }
-
     }
 }

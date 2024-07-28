@@ -13,7 +13,7 @@ public class orangePortal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("Muspelheim", LoadSceneMode.Single);
             Debug.Log("Collision");

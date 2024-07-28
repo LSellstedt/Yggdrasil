@@ -15,7 +15,7 @@ public class gulPortal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("Asgard", LoadSceneMode.Single);
             Debug.Log("Collision");
